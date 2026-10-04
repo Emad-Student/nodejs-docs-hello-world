@@ -201,8 +201,9 @@ router.delete('/accounts/:user', (req, res) => {
       return res.status(404).json({ error: 'Transaction does not exist' });
     }
   
-    // Remove transaction
-    account.transactions.splice(transactionIndex, 1);
+    // Remove transaction and take its amount back out of the balance
+    const [removed] = account.transactions.splice(transactionIndex, 1);
+    account.balance -= removed.amount;
   
     res.sendStatus(204);
   });

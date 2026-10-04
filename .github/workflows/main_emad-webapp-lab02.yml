@@ -3,10 +3,9 @@
 
 name: Build and deploy Node.js app to Azure Web App - emad-webapp-lab02
 
+# Manual run only: the Azure credentials (repository secrets) belong to the
+# lab subscription, so automatic deployments on push are switched off.
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
